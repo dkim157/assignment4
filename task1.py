@@ -17,8 +17,6 @@ def int_to_bytes(val):
 def b(a, b):
     bytes_a = int_to_bytes(a)        # 8 = 1000 in bytes
     bytes_b = int_to_bytes(b)        # 9 = 1001 in bytes (Hamming distance 1)
-    print(bytes_a)
-    print(bytes_b)
     ct = get_hash(bytes_a)           
     print(ct)
     ct2 = get_hash(bytes_b)           

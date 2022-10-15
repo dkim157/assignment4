@@ -30,7 +30,7 @@ if __name__ == '__main__':
 
     # part b
     b(8, 9)     # 8 = 1000 in bytes, 9 = 1001 in bytes (Hamming distance 1)
-    b(27, 31)     # 27 = 11011 in bytes, 31 = 11111 in bytes (Hamming distance 1)
+    b(27, 31)   # 27 = 11011 in bytes, 31 = 11111 in bytes (Hamming distance 1)
     b(32, 34)   # 32 = 100000 in bytes, 34 = 100010 in bytes (Hamming distance 1)
 
     # part c

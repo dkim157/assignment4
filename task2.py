@@ -64,7 +64,6 @@ def get_hashes(data):
 if __name__ == '__main__':
     data = read_shadow()
     lines = parse_shadow(data)
-    print(lines[0])
     cracked = get_hashes(lines)
     print(cracked)
     write_data(cracked)

@@ -1,4 +1,4 @@
-digest size (bits),number inputs
+digest size (bits), number of inputs until collision
 8,28
 10,31
 12,83

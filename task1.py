@@ -1,14 +1,25 @@
+from scipy.spatial.distance import hamming
 from Crypto.Random import get_random_bytes
 from Crypto.Hash import SHA256
 import time
 import random as r
+
+# from https://www.geeksforgeeks.org/hamming-distance-two-strings/
+def hammingDist(str1, str2):
+    i = 0
+    count = 0
+    while(i < len(str1)):
+        if(str1[i] != str2[i]):
+            count += 1
+        i += 1
+    return count
 
 def get_hash(b):
     if type(b) != bytes:
         b = bytes(b, 'utf-8')
     h = SHA256.new()
     h.update(b)
-    return h.hexdigest()
+    return h.digest()
 
 def int_to_bytes(val):
     byte_arr_len = (val.bit_length() + 7) // 8
@@ -18,10 +29,14 @@ def int_to_bytes(val):
 def b(a, b):
     bytes_a = int_to_bytes(a)        # 8 = 1000 in bytes
     bytes_b = int_to_bytes(b)        # 9 = 1001 in bytes (Hamming distance 1)
-    ct = get_hash(bytes_a)           
+    ct = get_hash(bytes_a)
+    print("Hash Pairs:")
     print(ct)
     ct2 = get_hash(bytes_b)           
     print(ct2)
+    print(hammingDist(ct, ct2))
+    print(len(ct))
+    #print(hamming(ct, ct2))
 
 def truncate_bits(b_int, k):
     binary = bin(b_int) # convert to binary string
@@ -70,11 +85,11 @@ if __name__ == '__main__':
     #ct = get_hash(rand_bytes)           # hashed
     #print(ct)                           # hex printed
 #
-    ## part b
-    #b(8, 9)     # 8 = 1000 in bytes, 9 = 1001 in bytes (Hamming distance 1)
-    #b(27, 31)   # 27 = 11011 in bytes, 31 = 11111 in bytes (Hamming distance 1)
-    #b(32, 34)   # 32 = 100000 in bytes, 34 = 100010 in bytes (Hamming distance 1)
+    # part b
+    b(8, 9)     # 8 = 1000 in bytes, 9 = 1001 in bytes (Hamming distance 1)
+    b(27, 31)   # 27 = 11011 in bytes, 31 = 11111 in bytes (Hamming distance 1)
+    b(32, 34)   # 32 = 100000 in bytes, 34 = 100010 in bytes (Hamming distance 1)
 
-    # part c
-    for i in range(8, 52, 2):
-        find_collision(i)
+    ## part c
+    #for i in range(8, 52, 2):
+    #    find_collision(i)
